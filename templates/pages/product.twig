@@ -1,0 +1,216 @@
+{% extends 'layout/main.twig' %}
+
+{% block page_title %}{{ product.data.name }} | {{ profile.site_name }}{% endblock %}
+
+{% block content %}
+  <div class="l-content">
+    <div class="product-page">
+      <section class="b-product">
+        <div class="b-product__header">
+          <h1>{{ product.terms[0].data.name }} - {{ product.data.name }}</h1>
+          <p>{{ product.data.price }}</p>
+        </div>
+        <div class="b-product__content">
+          <div class="b-product__content-aside">
+            {% if product.elements is defined %}
+              {% for element in product.elements %}
+                {% if element.type == 'image' %}
+                  {% include 'blocks/product-image.twig' with {'width': 250, 'height': 250, 'smartCrop': true} %}
+                {% endif %}
+              {% endfor %}
+            {%  endif %}
+            <ul class="b-product__content-aside--review-list">
+              <li class="numbered-list__item"> سوف تستخدم ذلك مرة أخرى؟ <span>{{ reviews.q1 }}/5</span></li>
+              <li class="numbered-list__item"> أنها لم تفعل ما قالت انها سوف؟ <span>{{ reviews.q2 }}/5</span> </li>
+              <li class="numbered-list__item"> أوصي به أحد الأصدقاء؟ <span>{{ reviews.q3 }}/5</span></li>
+            </ul>
+          </div>
+          <div class="b-product__content-main">
+            <ul class="b-product__content-main--rating-list">
+              <li class="rating-list__item">التصنيف العام</li>
+              <li class="rating-list__item--w-rates"><div class="qTotal" data-score="{{ reviews.qTotal }}"><span style="margin-left: 5px">{{ reviews.qTotal }}/5</span></div></li>
+              <li class="rating-list__item--reviewCount"> {{ reviews.totalCount }} <span>نقد</span></li>
+            </ul>
+            <p> {{ product.data.text | markdown }} </p>
+            <ul class="b-product__content-main--info-list">
+              {% if product.data.availability is defined and product.data.availability is not null %}
+                <li class="list__item"><span>توفر</span> {{ product.data.availability }}</li>
+              {% endif %}
+              {% if product.data.website is defined and product.data.website is not null %}
+                <li class="list__item"><span>موقع على الإنترنت</span><a href="http://{{ product.data.website }}" title="" target="_blank">{{ product.data.website }}</a></li>
+              {% endif %}
+            </ul>
+          </div>
+          {#<a href="#" class="btn">كتابة تعليق</a> </div>#}
+
+          <div class="b-product__footer">
+            <ul class="b-product__footer--share-list">
+              <li class="share-list__item-gplus">1</li>
+              <li class="share-list__item-tweet">2</li>
+              <li class="share-list__item-fb">3</li>
+              <li class="share-list__item-pinit">4</li>
+            </ul>
+            <div class="b-product__footer--write-review">
+              {% if user is defined and user is not null %}
+
+                <!--start div for review step2-->
+                <div class="write-review__step2">
+
+                  <h2>How would you rate {{ product.data.name }} ?</h2>
+
+                  <div class="write-review__step2--aside">
+                    {#<p class="write-review__step2--aside__title">Write a review</p>#}
+                    {#<p>Click the 3 rating boxes to add your rating to the overall rating of this product.</p>#}
+                    {#<p>Complete the review boxes and click Submit Review to post your complete review of this product.</p>#}
+
+                    <ul>
+                      <li>Would you use it again ? <div id="q1"></div></li>
+                      <li>Did it do what it said it would ? <div id="q2"></div></li>
+                      <li>Would you recommend it to a friend ? <div id="q3"></div></li>
+                    </ul>
+
+                  </div>
+                  <div class="write-review__step2--content">
+                    <form action="/review" method="post">
+                      <fieldset>
+                        <label>Review Title
+                          <input type="text" name="title" id="title" />
+                        </label>
+                      </fieldset>
+                      <fieldset>
+                        <label>Your Review
+                          <textarea name="content" id="content"></textarea>
+                        </label>
+                      </fieldset>
+                      <fieldset>
+                        <label>Any tips
+                          <textarea name="tip" id="tip"></textarea>
+                        </label>
+                      </fieldset>
+
+                      <input type="hidden" name="productId" value="{{ product.id }}" />
+                      <input type="hidden" name="q1" id="q1score" />
+                      <input type="hidden" name="q2" id="q2score" />
+                      <input type="hidden" name="q3" id="q3score" />
+                      <button class="btn" type="submit">Submit</button>
+                    </form>
+                  </div>
+                </div>
+
+              {% else %}
+
+                <div class="write-review__step1">
+                  <p class="write-review__step1--title">Write a review or rate the product?</p>
+                  <p class="write-review__step1--subtitle">To allow us record accurate reviews we require you to <a target="_blank" name="writereview">sign in</a> or <a target="_blank" href="register.html#writereview">register</a></p>
+                </div>
+
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="b-articles">
+        <h2 class="b-articles__section-title">({{ reviews.totalCount }}) Reviews</h2>
+        <div class="articles__comments">
+          {% if reviews.reviews is defined %}
+
+            {% if reviews.totalCount > 0 %}
+              <ul class="section-list__right-align">
+                <li class="section-list__item"><a title="" href="#">أحدث</a></li>
+                <li class="section-list__item"><a title="" href="#">الأعلى تقييما</a></li>
+                <li class="section-list__item"><a title="" href="#">الأكثر فائدة</a></li>
+              </ul>
+            {% else %}
+              Be the first to review {{ product.data.name }}
+            {% endif %}
+
+            {% for review in reviews.reviews %}
+              {% include 'reviews/review-item.twig' %}
+            {% endfor %}
+          {% endif %}
+        </div>
+      </section>
+      <section class="b-articles">
+        <h2 class="b-articles__section-title"> متعلق <span>نتاج</span></h2>
+        <div class="articles__products--related">
+          <article class="media-small product">
+            <h3 class="product-title">Maybelline Dream Mousse Blushl</h3>
+            <div class="media-small__item"> <a href="#"> <img alt="image title" src="/assets/images/example-images/product1.jpg"> </a> </div>
+            <div class="media-small__body">
+              <div class="w-rating"><img alt="image title" src="/assets/images/example-images/w-rates.png"></div>
+              <a class="prodCount" href="#" title="">17 الأخيرة (386 مجموع)</a>
+              <p class="subtitle">ثبت علميا الهباء الجوي لحماية</p>
+              <a class="link__readmore" href="#" title="">اقرأ المزيد</a> </div>
+          </article>
+          <article class="media-small product">
+            <h3 class="product-title">Wake up Conditioning Treatment</h3>
+            <div class="media-small__item"> <a href="#"> <img alt="image title" src="/assets/images/example-images/product2.jpg"> </a> </div>
+            <div class="media-small__body">
+              <div class="w-rating"><img src="/assets/images/example-images/w-rates.png" alt="image title"></div>
+              <a class="prodCount" href="#" title="">17 الأخيرة (386 مجموع)</a>
+              <p class="subtitle">ثبت علميا الهباء الجوي لحماية</p>
+              <a class="link__readmore" href="#" title="">اقرأ المزيد</a> </div>
+          </article>
+          <article class="media-small product">
+            <h3 class="product-title">Nivea Fresh</h3>
+            <div class="media-small__item"> <a href="#"> <img alt="image title" src="/assets/images/example-images/product3.jpg"> </a> </div>
+            <div class="media-small__body">
+              <div class="w-rating"><img alt="image title" src="/assets/images/example-images/w-rates.png"></div>
+              <a class="prodCount" href="#" title="">17 الأخيرة (386 مجموع)</a>
+              <p class="subtitle">ثبت علميا الهباء الجوي لحماية</p>
+              <a title="" href="#" class="link__readmore">اقرأ المزيد</a> </div>
+          </article>
+          <article class="media-small product">
+            <h3 class="product-title">Wake up Conditioning Treatment</h3>
+            <div class="media-small__item"> <a href="#"> <img alt="image title" src="/assets/images/example-images/product4.jpg"> </a> </div>
+            <div class="media-small__body">
+              <div class="w-rating"><img alt="image title" src="/assets/images/example-images/w-rates.png"></div>
+              <a class="prodCount" href="#" title="">17 الأخيرة (386 مجموع)</a>
+              <p class="subtitle">ثبت علميا الهباء الجوي لحماية</p>
+              <a class="link__readmore" href="#" title="">اقرأ المزيد</a> </div>
+          </article>
+        </div>
+        <a href="#" title="" class="btn">عرض جميع المنتجات</a> </section>
+    </div>
+    <aside class="l-sidebar">
+      <div class="mpu__top"> <img src="/assets/images/example-images/mpu.jpg" alt="image title"> </div>
+      {% include 'blocks/counter.twig' with {'counter': fetchGlobalCounter()} %}
+
+      <div class="w-forum">
+        <div class="col-border">
+          <p class="forum__section-title">اجتماع</p>
+          <div class="forum__content">
+            <p class="forum__title">Popularised في 1960s مع اطلاق ورقة تحتوي على Letraset</p>
+            <p class="forum__data"> <span class="data__comments">13</span> <span class="data__user">by <a href="#" title="" class="data__user--name">اسم المستخدم</a></span> <span class="data__post-day">منذ 5 أيام</span> </p>
+          </div>
+          <div class="forum__content">
+            <p class="forum__title">Popularised في 1960s مع اطلاق ورقة تحتوي على Letraset</p>
+            <p class="forum__data"> <span class="data__comments">13</span> <span class="data__user">by <a href="#" title="" class="data__user--name">اسم المستخدم</a></span> <span class="data__post-day">منذ 5 أيام</span> </p>
+          </div>
+          <div class="forum__content">
+            <p class="forum__title">Popularised في 1960s مع اطلاق ورقة تحتوي على Letraset</p>
+            <p class="forum__data"> <span class="data__comments">13</span> <span class="data__user">by <a href="#" title="" class="data__user--name">اسم المستخدم</a></span> <span class="data__post-day">منذ 5 أيام</span> </p>
+          </div>
+        </div>
+      </div>
+      <div class="w-poll">
+        <div class="col-border">
+          <p class="w-poll__section-title">Poll</p>
+          <div class="w-poll__img--full"> <img class="w-poll__img" src="/assets/images/example-images/poll.jpg" alt="image title"> </div>
+          <p class="w-poll__title">وقد شاع ذكرها في 1960s مع اطلاق ورقة تحتوي على Letraset؟</p>
+          <form>
+            <fieldset class="w-poll__fieldset">
+              <input type="radio" class="w-poll__input">
+              <label class="w-poll__label">الإجابة واحدة</label>
+            </fieldset>
+            <fieldset class="w-poll__fieldset">
+              <input type="radio" class="w-poll__input">
+              <label class="w-poll__label">الإجابة واحدة</label>
+            </fieldset>
+          </form>
+          <a href="#" class="btn">عرض</a> </div>
+      </div>
+      <div class="mpu__bottom"> <img src="/assets/images/example-images/mpu.jpg" alt="image title"> </div>
+    </aside>
+  </div>
+{% endblock %} 

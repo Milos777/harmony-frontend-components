@@ -1,0 +1,268 @@
+////////////////////////////////////////
+// non semantic - comment to use semantic + in settings.scss change false to true
+
+.subheader {
+  margin: 40px auto ;
+}
+.subtitle {
+  text-transform: uppercase;
+  color:$primary-color;
+
+}
+.demo-help-classes .columns {
+  border:solid 1px scale-color($black, $lightness: 90%);
+  margin-bottom: 40px;
+}
+code {
+  background-color:scale-color($black, $lightness: 95%);
+  border: solid 1px scale-color($black, $lightness: 90%);
+  padding: 0 5px;
+  font-family: Consolas,"Liberation Mono",Courier,monospace;
+  border-radius: $global-radius;
+  font-size: rem-calc(14);
+}
+.demo-grid .row {
+  line-height: 60px;
+  font-size: rem-calc(10);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  background-color:#eaeaea;
+}
+
+.demo-grid .columns {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  background-color:#f5f5f5;
+}
+
+.test-show-for-small-only  {
+  color: red;
+  @extend .show-for-small-only;
+}
+
+button {
+  background-color: $black;
+  border:none;
+  padding:10px;
+  color: $white;
+  margin-bottom: 10px; 
+}
+
+.mixin-side-radius {
+  background-color:scale-color($black, $lightness: -14%);
+  color:$white;
+  @include ltr {
+    @include side-radius(left, $radius:$global-radius);
+  }
+  @include rtl {
+    @include side-radius(right, $radius:$global-radius);
+  }
+}
+
+.element-invisible {
+  background-color:$hr;
+  color:$black;
+  padding:5px;
+  @media #{$small-only} {
+    @include element-invisible-off ;
+  }
+}
+
+.test-transition {
+  background-color: $black;
+  padding:10px;
+  color: $white;
+  margin-bottom: 10px; 
+  display: inline-block;
+  &:hover {
+    @include single-transition;
+    background-color:scale-color($anchor, $lightness: -14%);
+    color: $black;
+  }
+}
+.demo-help-classes-w {
+    border:solid 1px scale-color($black, $lightness: 90%);
+  margin-bottom: 40px;
+  padding:rem-calc(10);
+}
+
+
+////////////////////////////////////////
+// semantic - uncomment to use  + in settings.scss change false to true
+
+/*
+.subheader {
+  margin: 40px auto ;
+}
+.subtitle {
+  text-transform: uppercase;
+  background-color:scale-color($black, $lightness: 95%);
+
+}
+.demo-help-classes .columns {
+  background-color:scale-color($black, $lightness: 90%);
+  margin-bottom: 40px;
+}
+code {
+  background-color:scale-color($black, $lightness: 95%);
+  border: solid 1px scale-color($black, $lightness: 90%);
+  padding: 0 5px;
+  font-family: Consolas,"Liberation Mono",Courier,monospace;
+  border-radius: $global-radius;
+  font-size: rem-calc(14);
+}
+.demo-grid .row {
+  line-height: 60px;
+  font-size: rem-calc(10);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  background-color:#eaeaea;
+}
+
+.demo-grid .columns {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  background-color:#f5f5f5;
+}
+
+//Grid
+.row {
+    @include grid-row();
+}
+
+.small-1 {
+    @include grid-column(1);
+   background-color:#df0973 !important;
+}
+.small-2 {
+   background-color:#fd9843 !important;
+  @include grid-column(2);
+}
+.small-3 {
+  @include grid-column(3);
+}
+.small-4 {
+  @include grid-column(4);
+}
+.small-5 {
+  @include grid-column(5);
+}
+.small-6 {
+  @include grid-column(6);
+}
+.small-7 {
+  @include grid-column(7);
+}
+.small-8 {
+  @include grid-column(8);
+}
+.small-9{
+  @include grid-column(9);
+}
+.small-10 {
+  @include grid-column(10);
+}
+.small-11 {
+  @include grid-column(11);
+}
+.small-12 {
+  @include grid-column(12);
+}
+
+
+//style
+.demo-grid .row {
+line-height: 60px;
+    font-size: rem-calc(10);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+    background-color:#eaeaea;
+  }
+
+.demo-grid .columns {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+    background-color:#f5f5f5;
+  }
+
+
+//media 
+.demo-grid-visibility {
+  @media #{$small-only} {
+    @include grid-column(3);
+   background-color:#df0973 !important;
+  }
+  @media #{$large-up} {
+    @include grid-column(5);
+    background-color:#09dfcd !important;
+  }
+}
+
+.demo-grid-visibility-second {
+  @media #{$small-only} {
+    @include grid-column(7);
+   background-color:#8b8848 !important;
+  }
+  @media #{$large-up} {
+    @include grid-column(2);
+    background-color:#8d990a !important;
+  }
+}
+
+.demo-grid-visibility-third {
+  @media #{$small-only} {
+    @include grid-column(2);
+   background-color:#434117 !important;
+  }
+  @media #{$large-up} {
+    @include grid-column(5);
+    background-color:#363b04 !important;
+  }
+} 
+
+.row .columns.image-test {
+  @include grid-column($center:true);
+}
+
+
+.pagination-centered { 
+  @include pagination-container(true); 
+}
+.pagination  { 
+  @include pagination($centered, $base-styles); 
+}
+
+.test-block-grid{
+  @include block-grid(3);
+}
+
+.test-show-for-small-only  {
+  color: red;
+    @extend .show-for-small-only;
+}
+
+
+.mixin-side-radius {
+  background-color:scale-color($black, $lightness: -14%);
+  color:$white;
+  @include ltr {
+    @include side-radius(left, $radius:$global-radius);
+  }
+  @include rtl {
+    @include side-radius(right, $radius:$global-radius);
+  }
+}
+
+.element-invisible {
+  @include element-invisible;
+  background-color:$white;
+  color:$black;
+  @media #{$small-only} {
+    @include element-invisible-off ;
+  }
+}
+
+.mixin-go {
+  @include go;
+}
+
+.hide-element  {
+  clear: both;
+}
+
+
+*/

@@ -1,0 +1,46 @@
+{% extends 'layout/main.twig' %}
+
+{% block page_title %}Search Results | {{ profile.site_name }}{% endblock %}
+
+{% block content %}
+
+  <div class="l-content">
+
+    <div class="l-2col-r">
+
+      <div class="l-2col-r--inner">
+        <h1 class="subcat-pg-title">Search Results</h1>
+
+        {% if articles is defined %}
+          <ul class="ui-list">
+            {% for article in articles %}
+              <li class="ui-list__item">
+                {% include 'blocks/article-media.twig' %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+      </div>
+      {% if showPager %}
+        {% include 'includes/pagination.twig' with {
+          currentPage: pagination.currentPage,
+          paginationPath: pagination.paginationPath,
+          totalPages: pagination.totalPages,
+          defaultRange: pagination.defaultRange,
+        } only %}
+      {% endif %}
+    </div>
+
+    <div class="l-sidebar">
+      <div class="ad-sidebar__holder">
+        <div class="ad-sidebar--top" id="ad-above-fold-MPU-holder">
+          {% include 'blocks/ad.twig'  with { 'zoneId': 'ad-above-fold-MPU', 'width': 300, 'height': 250 } %}
+        </div>
+      </div>
+
+      {% include 'blocks/counter.twig' with {'counter': fetchGlobalCounter()} %}
+
+    </div>
+  </div>
+{% endblock %}

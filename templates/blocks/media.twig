@@ -1,0 +1,31 @@
+<article class="media">
+  <div class="media__img">
+    <span rel="{{ hideUrl('/article/' ~ slugCreate(article.data.path, article.id)) }}" class="hrl">
+      <img src="{{ thumborUrl(null,null, article, 320, 240, true, null, 90) }}" />
+    </span>
+  </div>
+  <div class="media__body">
+    <div class="media__header">
+      <span class="media__date">
+        {% if article.data.publish_start is defined %}
+          {{ article.data.publish_start|date("d.m.Y") }}
+        {% endif %}
+      </span>
+      <span rel="#" class="hrl media__author">{{ article.authors[0].nickname }}</span>
+    </div>
+    <h2 class="media__title"><a href="/article/{{ slugCreate(article.data.path, article.id) }}" title="{{ article.data.article_title }}">{{ article.data.article_title }} <!--small>{{ article.id }}</small--></a></h2>
+    <p class="media__text">
+      <span rel="{{ hideUrl('/article/' ~ slugCreate(article.data.path, article.id)) }}" class="hrl">
+        {% if article.data.teaser is defined %}
+          {{ article.data.teaser|markdown }}
+        {% endif %}
+      </span>
+    </p>
+    <div class="media__footer">
+    <div class="media__link__holder--subcategory">
+      <span rel="{{ hideUrl('/tag/' ~ slugCreate(article.terms[0].data.name)) }}" class="hrl media__link--subcategory">{{ article.terms[0].data.name }}</span>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>

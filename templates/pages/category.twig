@@ -1,0 +1,140 @@
+{% extends 'layout/main.twig' %}
+
+{% block page_title %}{{ category }} | {{ profile.site_name }}{% endblock %}
+
+{% block content %}
+
+  <div class="l-content">
+
+    {% include 'blocks/category-tags.twig' %}
+
+    <aside class="l-sidebar two-blocks">
+      {% include 'blocks/product-promo.twig' %}
+
+      <div class="mpu__top">
+        <img src="/assets/images/example-images/mpu.jpg" alt="image title">
+      </div>
+    </aside>
+    <div class="l-content__page">
+      <section class="b-articles">
+        <h2 class="b-articles__section-title">مؤخرا<span>نقد</span></h2>
+
+        <div class="b-scroll-3thumbs__list">
+          <div class="b-scroll-3thumbs__item"> <img class="b-scroll-3thumbs__item--img" src="/assets/images/example-images/slide1.jpg" alt="image title">
+            <div class="w-rating"><img src="/assets/images/example-images/w-rates.png" alt="image title"></div>
+            <p class="b-scroll-3thumbs__item--title">Oasis Rhino Repair</p>
+            <p class="b-scroll-3thumbs__item--subtitle">اسم العلامة التجارية</p>
+            <p class="b-scroll-3thumbs__item--reviewCount">17 نقد</p>
+          </div>
+          <div class="b-scroll-3thumbs__item"> <img class="b-scroll-3thumbs__item--img" src="/assets/images/example-images/slide2.jpg" alt="image title">
+            <div class="w-rating"><img src="/assets/images/example-images/w-rates.png" alt="image title"></div>
+            <p class="b-scroll-3thumbs__item--title">Oasis Rhino Repair</p>
+            <p class="b-scroll-3thumbs__item--subtitle">اسم العلامة التجارية</p>
+            <p class="b-scroll-3thumbs__item--reviewCount">17 نقد</p>
+          </div>
+          <div class="b-scroll-3thumbs__item"> <img class="b-scroll-3thumbs__item--img" src="/assets/images/example-images/slide3.jpg" alt="image title">
+            <div class="w-rating"><img src="/assets/images/example-images/w-rates.png" alt="image title"></div>
+            <p class="b-scroll-3thumbs__item--title">Oasis Rhino Repair</p>
+            <p class="b-scroll-3thumbs__item--subtitle">اسم العلامة التجارية</p>
+            <p class="b-scroll-3thumbs__item--reviewCount">17 نقد</p>
+          </div>
+          <div class="b-scroll-3thumbs__item"> <img class="b-scroll-3thumbs__item--img" src="/assets/images/example-images/slide1.jpg" alt="image title">
+            <div class="w-rating"><img src="/assets/images/example-images/w-rates.png" alt="image title"></div>
+            <p class="b-scroll-3thumbs__item--title">Oasis Rhino Repair</p>
+            <p class="b-scroll-3thumbs__item--subtitle">اسم العلامة التجارية</p>
+            <p class="b-scroll-3thumbs__item--reviewCount">17 نقد</p>
+          </div>
+          <div class="b-scroll-3thumbs__item"> <img class="b-scroll-3thumbs__item--img" src="/assets/images/example-images/slide2.jpg" alt="image title">
+            <div class="w-rating"><img src="/assets/images/example-images/w-rates.png" alt="image title"></div>
+            <p class="b-scroll-3thumbs__item--title">Oasis Rhino Repair</p>
+            <p class="b-scroll-3thumbs__item--subtitle">اسم العلامة التجارية</p>
+            <p class="b-scroll-3thumbs__item--reviewCount">17 نقد</p>
+          </div>
+          <div class="b-scroll-3thumbs__item"> <img class="b-scroll-3thumbs__item--img" src="/assets/images/example-images/slide3.jpg" alt="image title">
+            <div class="w-rating"><img src="/assets/images/example-images/w-rates.png" alt="image title"></div>
+            <p class="b-scroll-3thumbs__item--title">Oasis Rhino Repair</p>
+            <p class="b-scroll-3thumbs__item--subtitle">اسم العلامة التجارية</p>
+            <p class="b-scroll-3thumbs__item--reviewCount">17 نقد</p>
+          </div>
+          <div class="b-scroll-3thumbs__item"> <img class="b-scroll-3thumbs__item--img" src="/assets/images/example-images/slide1.jpg" alt="image title">
+            <div class="w-rating"><img src="/assets/images/example-images/w-rates.png" alt="image title"></div>
+            <p class="b-scroll-3thumbs__item--title">Oasis Rhino Repair</p>
+            <p class="b-scroll-3thumbs__item--subtitle">اسم العلامة التجارية</p>
+            <p class="b-scroll-3thumbs__item--reviewCount">17 نقد</p>
+          </div>
+          <div class="b-scroll-3thumbs__item"> <img class="b-scroll-3thumbs__item--img" src="/assets/images/example-images/slide2.jpg" alt="image title">
+            <div class="w-rating"><img src="/assets/images/example-images/w-rates.png" alt="image title"></div>
+            <p class="b-scroll-3thumbs__item--title">Oasis Rhino Repair</p>
+            <p class="b-scroll-3thumbs__item--subtitle">اسم العلامة التجارية</p>
+            <p class="b-scroll-3thumbs__item--reviewCount">17 نقد</p>
+          </div>
+          <div class="b-scroll-3thumbs__item"> <img class="b-scroll-3thumbs__item--img" src="/assets/images/example-images/slide3.jpg" alt="image title">
+            <div class="w-rating"><img src="/assets/images/example-images/w-rates.png" alt="image title"></div>
+            <p class="b-scroll-3thumbs__item--title">Oasis Rhino Repair</p>
+            <p class="b-scroll-3thumbs__item--subtitle">اسم العلامة التجارية</p>
+            <p class="b-scroll-3thumbs__item--reviewCount">17 نقد</p>
+          </div>
+        </div>
+
+        <a href="#" title="" class="btn"><span>رؤية المزيد</span></a> </section>
+      <section class="b-articles">
+        <h2 class="b-articles__section-title">أقصى<span>نقد</span></h2>
+        <section class="articles__review-products">
+          <h2 class="article__review-products--title-left">نيفيا الإجهاد حماية مزيل العرق الهباء</h2>
+          {% include 'blocks/product-media-small.twig' %}
+          {% include 'blocks/product-media-small.twig' %}
+          {% include 'blocks/product-media-small.twig' %}
+          {% include 'blocks/product-media-small.twig' %}
+        </section>
+        <a href="#" title="" class="btn">عرض جميع المنتجات</a> </section>
+      <section class="b-articles">
+        <h2 class="b-articles__section-title">ذات الصلة<span>  مقالة  </span></h2>
+        <section class="articles__related">
+          {% include 'blocks/product-media-big.twig' %}
+          {% include 'blocks/product-media-big.twig' %}
+        </section>
+      </section>
+    </div>
+    <aside class="l-sidebar">
+      {% include 'blocks/counter.twig' with {'counter': fetchGlobalCounter()} %}
+
+      <div class="w-forum">
+        <div class="col-border">
+          <p class="forum__section-title">اجتماع</p>
+          <div class="forum__content">
+            <p class="forum__title">Popularised في 1960s مع اطلاق ورقة تحتوي على Letraset</p>
+            <p class="forum__data"> <span class="data__comments">13</span> <span class="data__user">by <a class="data__user--name" title="" href="#">اسم المستخدم</a></span> <span class="data__post-day">منذ 5 أيام</span> </p>
+          </div>
+          <div class="forum__content">
+            <p class="forum__title">Popularised في 1960s مع اطلاق ورقة تحتوي على Letraset</p>
+            <p class="forum__data"> <span class="data__comments">13</span> <span class="data__user">by <a class="data__user--name" title="" href="#">اسم المستخدم</a></span> <span class="data__post-day">منذ 5 أيام</span> </p>
+          </div>
+          <div class="forum__content">
+            <p class="forum__title">Popularised في 1960s مع اطلاق ورقة تحتوي على Letraset</p>
+            <p class="forum__data"> <span class="data__comments">13</span> <span class="data__user">by <a class="data__user--name" title="" href="#">اسم المستخدم</a></span> <span class="data__post-day">منذ 5 أيام</span> </p>
+          </div>
+        </div>
+      </div>
+      <div class="w-poll">
+        <div class="col-border">
+          <p class="w-poll__section-title">Poll</p>
+          <div class="w-poll__img--full"> <img alt="image title" src="/assets/images/example-images/poll.jpg" class="w-poll__img"> </div>
+          <p class="w-poll__title">وقد شاع ذكرها في 1960s مع اطلاق ورقة تحتوي على Letraset؟</p>
+          <form>
+            <fieldset class="w-poll__fieldset">
+              <input type="radio" class="w-poll__input">
+              <label class="w-poll__label">الإجابة واحدة</label>
+            </fieldset>
+            <fieldset class="w-poll__fieldset">
+              <input type="radio" class="w-poll__input">
+              <label class="w-poll__label">الإجابة واحدة</label>
+            </fieldset>
+          </form>
+          <a class="btn" href="#">عرض</a> </div>
+      </div>
+      <div class="mpu__bottom"> <img alt="image title" src="/assets/images/example-images/mpu.jpg"> </div>
+    </aside>
+  </div>
+  <div class="leaderboard__bottom"><img src="/assets/images/example-images/banner-large.jpg" alt="image title"> </div>
+
+{% endblock %}
