@@ -1,5 +1,5 @@
 {
-  "name": "harmony-front-components",
+  "name": "harmony-frontend-components",
   "version": "0.0.1-dev",
   "dependencies": {
     "fastclick": "1.0.3",

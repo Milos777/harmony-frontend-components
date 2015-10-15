@@ -6,7 +6,7 @@
     "jquery": "2.1.1",
     "jquery.cookie" : "1.4.1",
     "modernizr" : "2.8.3",
-    "devicejs" : "0.1.61",
+    "devicejs" : "0.2.7",
     "jsSHA" : "1.5.0"
   }
 }
