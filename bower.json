@@ -1,0 +1,12 @@
+{
+  "name": "harmony-front-components",
+  "version": "0.0.1-dev",
+  "dependencies": {
+    "fastclick": "1.0.3",
+    "jquery": "2.1.1",
+    "jquery.cookie" : "1.4.1",
+    "modernizr" : "2.8.3",
+    "devicejs" : "0.1.61",
+    "jsSHA" : "1.5.0"
+  }
+}
